@@ -20,12 +20,12 @@ RUN apt-get update && \
     curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV PATH=~/.local/bin:$PATH
 
-RUN uv venv --python=3.12 --no-project --no-config --seed ~/venv
+RUN ~/.local/bin/uv venv --python=3.12 --no-project --no-config --seed ~/venv
 
 ARG VLLM_COMMIT=f9ca2b40a0357d98e3fb8bd951745dfaceab459e
 RUN source ~/venv/bin/activate && \
-    uv pip install vllm --torch-backend=cu128 --extra-index-url=https://wheels.vllm.ai/${VLLM_COMMIT} && \
-    uv pip uninstall vllm
+    ~/.local/bin/uv pip install vllm --torch-backend=cu128 --extra-index-url=https://wheels.vllm.ai/${VLLM_COMMIT} && \
+    ~/.local/bin/uv pip uninstall vllm
 
 WORKDIR ~/
 ENTRYPOINT ["/bin/bash"]
