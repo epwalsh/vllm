@@ -23,7 +23,7 @@ ENV PATH=~/.local/bin:$PATH
 RUN ~/.local/bin/uv venv --python=3.12 --no-project --no-config --seed ~/venv
 
 ARG VLLM_COMMIT=f9ca2b40a0357d98e3fb8bd951745dfaceab459e
-RUN source ~/venv/bin/activate && \
+RUN ~/venv/bin/activate && \
     ~/.local/bin/uv pip install vllm --torch-backend=cu128 --extra-index-url=https://wheels.vllm.ai/${VLLM_COMMIT} && \
     ~/.local/bin/uv pip uninstall vllm
 
