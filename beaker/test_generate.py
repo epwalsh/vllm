@@ -30,4 +30,4 @@ def main(model_name: str = "allenai/OLMo-2-0425-1B"):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(*sys.argv[1:])

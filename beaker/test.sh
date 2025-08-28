@@ -1,17 +1,23 @@
 #!/usr/bin/env bash
 
-echo "#####################"
-echo "Testing generation..."
-echo "#####################"
+model=allenai/OLMo-2-0425-1B
 
-python beaker/test_generate.py allenai/OLMo-2-0425-1B
+echo ""
+echo "####################################"
+echo "### (vllm) Testing generation... ###"
+echo "####################################"
+echo ""
 
-echo "#####################"
-echo "Testing throughput..."
-echo "#####################"
+python beaker/test_generate.py "$model"
+
+echo ""
+echo "####################################"
+echo "### (vllm) Testing throughput... ###"
+echo "####################################"
+echo ""
 
 vllm bench throughput \
-    --model=allenai/OLMo-2-0425-1B \
+    --model="$model" \
     --input-len=32 \
     --output-len=1 \
     --enforce-eager \
