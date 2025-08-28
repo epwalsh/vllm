@@ -13,14 +13,10 @@ gantry run \
     --task-timeout=30m \
     --gpu-type=h100 \
     --gpus=1 \
+    --beaker-image="petew/vllm-test-${VLLM_COMMIT}" \
+    --uv-venv='/root/venv' \
     --env='VLLM_USE_PRECOMPILED=1' \
     --env='VLLM_COMMIT' \
     --env='VLLM_PRECOMPILED_WHEEL_LOCATION' \
     --install="uv pip install --editable . --torch-backend=cu128" \
-    -- vllm bench throughput \
-        --model=allenai/OLMo-2-0425-1B \
-        --input-len=32 \
-        --output-len=1 \
-        --enforce-eager \
-        --load-format=dummy \
-        --output-json=/results/metrics.json
+    -- ./beaker/test.sh
