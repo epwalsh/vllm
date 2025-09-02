@@ -2,6 +2,8 @@
 
 model=allenai/OLMo-2-0425-1B
 
+echo "Starting vllm tests with model '$model'..."
+
 echo ""
 echo -e "\e[36m\e[1m####################################\e[0m"
 echo -e "\e[36m\e[1m### (vllm) Testing generation... ###\e[0m"
